@@ -1,0 +1,27 @@
+<table id="content" width="100%">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Email</td>
+            <td>Nom</td>
+            <td>Prenom</td>
+            <td>CIN</td>
+            <td>action</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+          <tr id="{{ user.id }}">
+              <td>{{ user.id }}</td>
+              <td data-target="email">{{ user.email }}</td>
+              <td data-target="nom">{{ user.nom }}</td>
+              <td data-target="prenom">{{ user.prenom }}</td>
+              <td data-target="cin">{{ user.cin }}</td>
+              <td>
+                    <a href="#" data-role="update" data-id= "{{ user.id }}"><i id="edit" class="las la-edit"></i></a>
+                    <a href="#" data-role="delete" data-id="{{ user.id }}"><i id="delete" class="las la-trash"></i></a>
+                </td>
+          </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'inscription</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: hsl(230, 75%, 15%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            padding: 50px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        .container h1 {
+            color: hsl(230, 75%, 15%);
+            margin-bottom: 24px;
+        }
+        .imgcontainer {
+            margin: 24px 0;
+        }
+        .imgcontainer img {
+            width: 100px;
+            border-radius: 50%;
+        }
+        label {
+            font-size: 18px;
+            display: block;
+            margin: 12px 0 6px;
+            text-align: left;
+        }
+        input[type=email], input[type=text], input[type=password] {
+            width: 100%;
+            font-size: 15px;
+            margin: 8px 0;
+            padding: 12px 20px;
+            display: inline-block;
+            border: 2px solid hsl(230, 75%, 15%);
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type=radio] {
+            height: 18px;
+            width: 18px;
+        }
+        button {
+            background-color: hsl(230, 75%, 15%);
+            width: 100%;
+            padding: 15px;
+            color: white;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 12px 0;
+        }
+        button:hover {
+            opacity: 0.7;
+        }
+        .login-link {
+            display: block;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Inscription</h1>
+        <form action="#" method="post">
+            {% csrf_token %}
+            <div class="imgcontainer">
+                <img src="{% static 'avatar_img1.jpg' %}" alt="Avatar" class="avatar">
+            </div>
+            <label for="prenom"><b>Prénom :</b></label>
+            <input type="text" placeholder="Entrez votre prénom" name="prenom" required><br>
+            <label for="nom"><b>Nom :</b></label>
+            <input type="text" placeholder="Entrez votre nom" name="nom" required><br>
+            <label for="cin"><b>CIN :</b></label>
+            <input type="text" placeholder="Entrez votre CIN" name="cin" required><br>
+            <label for="email"><b>Email :</b></label>
+            <input type="email" placeholder="Entrez votre email" name="email" required><br>
+            <label for="password"><b>Mot de passe :</b></label>
+            <input type="password" placeholder="Entrez votre mot de passe" name="password" required><br>
+            <button type="submit"><b>Inscrire</b></button><br>
+            <span class="login-link">Déjà un compte ? <a href="{% url 'index' %}">Connectez-vous ici</a></span>
+        </form>
+    </div>
+</body>
+</html>

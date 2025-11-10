@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: hsl(230, 75%, 15%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            padding: 50px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        .container h1 {
+            color: hsl(230, 75%, 15%);
+            margin-bottom: 24px;
+        }
+        .imgcontainer {
+            margin: 24px 0;
+        }
+        .imgcontainer img {
+            width: 100px;
+            border-radius: 50%;
+        }
+        label {
+            font-size: 18px;
+            display: block;
+            margin: 12px 0 6px;
+            text-align: left;
+        }
+        input[type=email], input[type=password] {
+            width: 100%;
+            font-size: 15px;
+            margin: 8px 0;
+            padding: 12px 20px;
+            display: inline-block;
+            border: 2px solid hsl(230, 75%, 15%);
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: hsl(230, 75%, 15%);
+            width: 100%;
+            padding: 15px;
+            color: white;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 12px 0;
+        }
+        button:hover {
+            opacity: 0.7;
+        }
+        .signup-link {
+            display: block;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Connexion</h1>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="imgcontainer">
+                <img src="{% static 'avatar_img1.jpg' %}" alt="Avatar" class="avatar">
+            </div>
+            <label for="email"><b>Email utilisateur :</b></label>
+            <input type="email" placeholder="Entrez votre email" name="email" required><br>
+            <label for="password"><b>Mot de passe :</b></label>
+            <input type="password" placeholder="Entrez votre mot de passe" name="password" required><br>
+            <button type="button" name="login" onclick="location.href='{% url 'welcome_admin' %}'"><b>Connexion</b></button><br>
+            <span class="signup-link">Vous n'avez pas de compte? <a href="{% url 'signup' %}">Inscrivez-vous</a></span>
+        </form>
+        {% if request.GET.x == '1' %}
+        <script>
+            alert("Email ou mot de passe incorrect");
+        </script>
+        {% endif %}
+    </div>
+</body>
+</html>
